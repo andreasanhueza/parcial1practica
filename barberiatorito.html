@@ -1,0 +1,810 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Torito The Barber$ - Barbería</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #8B4513;
+            --secondary-color: #D2691E;
+            --accent-color: #DAA520;
+            --dark-color: #2F1B14;
+            --light-color: #F5F5DC;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
+            color: #fff;
+            min-height: 100vh;
+        }
+
+        /* Navbar Styles */
+        .navbar {
+            background: linear-gradient(135deg, var(--primary-color), var(--dark-color)) !important;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+            padding: 1rem 0;
+        }
+
+        .navbar-brand {
+            font-weight: bold;
+            font-size: 1.8rem;
+            color: var(--accent-color) !important;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+        }
+
+        .nav-link {
+            color: #fff !important;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            padding: 0.5rem 1rem !important;
+            border-radius: 5px;
+            margin: 0 0.2rem;
+        }
+
+        .nav-link:hover {
+            color: var(--accent-color) !important;
+            background: rgba(218, 165, 32, 0.1);
+            transform: translateY(-2px);
+        }
+
+        /* Carousel Styles */
+        .carousel-container {
+            margin: 2rem 0;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+        }
+
+        .carousel-item img {
+            height: 500px;
+            object-fit: cover;
+            filter: brightness(0.8);
+        }
+
+        .carousel-indicators button {
+            background-color: var(--accent-color);
+            border: 2px solid #fff;
+            width: 15px;
+            height: 15px;
+            border-radius: 50%;
+        }
+
+        /* Animated Title */
+        .title-section {
+            text-align: center;
+            margin: 4rem 0;
+            padding: 3rem 1rem;
+        }
+
+        .animated-title {
+            font-family: 'Georgia', serif;
+            font-size: 4.5rem;
+            font-weight: bold;
+            background: linear-gradient(45deg, var(--accent-color), #FFD700, var(--secondary-color), #FF8C00);
+            background-size: 400% 400%;
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: gradientMove 4s ease-in-out infinite;
+            transition: all 0.4s ease;
+            cursor: pointer;
+            text-shadow: 0 0 20px rgba(218, 165, 32, 0.3);
+            position: relative;
+        }
+
+        .animated-title:hover {
+            transform: scale(1.15);
+            filter: drop-shadow(0 0 20px rgba(218, 165, 32, 0.6));
+            animation-duration: 1s;
+        }
+
+        @keyframes gradientMove {
+            0%, 100% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+        }
+
+        .subtitle {
+            font-family: 'Georgia', serif;
+            font-size: 1.8rem;
+            color: var(--light-color);
+            margin-top: 1.5rem;
+            font-style: italic;
+            opacity: 0.9;
+        }
+
+        /* Form Styles */
+        .form-container {
+            background: linear-gradient(135deg, rgba(139, 69, 19, 0.15), rgba(47, 27, 20, 0.2));
+            border: 2px solid var(--accent-color);
+            border-radius: 20px;
+            padding: 3rem;
+            margin: 3rem 0;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.3);
+        }
+
+        .section-title {
+            color: var(--accent-color);
+            font-size: 2.8rem;
+            margin-bottom: 2rem;
+            text-align: center;
+            font-weight: bold;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .form-label {
+            color: var(--accent-color);
+            font-weight: bold;
+            font-size: 1.1rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .form-control, .form-select {
+            background: rgba(245, 245, 220, 0.1);
+            border: 2px solid rgba(218, 165, 32, 0.5);
+            color: #fff;
+            border-radius: 10px;
+            padding: 0.8rem;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        .form-control:focus, .form-select:focus {
+            background: rgba(245, 245, 220, 0.2);
+            border-color: var(--accent-color);
+            box-shadow: 0 0 15px rgba(218, 165, 32, 0.4);
+            color: #fff;
+        }
+
+        .form-control::placeholder {
+            color: rgba(245, 245, 220, 0.7);
+        }
+
+        .form-select option {
+            background: var(--dark-color);
+            color: #fff;
+        }
+
+        /* Radio and Checkbox Styles */
+        .form-check {
+            margin: 0.8rem 0;
+            padding: 0.5rem;
+            border-radius: 8px;
+            transition: background 0.3s ease;
+        }
+
+        .form-check:hover {
+            background: rgba(218, 165, 32, 0.1);
+        }
+
+        .form-check-label {
+            color: #fff;
+            font-weight: 500;
+            font-size: 1.05rem;
+            cursor: pointer;
+        }
+
+        .form-check-input[type="radio"], .form-check-input[type="checkbox"] {
+            border: 2px solid var(--accent-color);
+            background: transparent;
+        }
+
+        .form-check-input:checked {
+            background-color: var(--accent-color);
+            border-color: var(--accent-color);
+        }
+
+        /* Button Styles */
+        .btn-primary {
+            background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
+            border: none;
+            border-radius: 30px;
+            padding: 15px 40px;
+            font-weight: bold;
+            font-size: 1.2rem;
+            transition: all 0.4s ease;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(218, 165, 32, 0.4);
+            background: linear-gradient(45deg, var(--secondary-color), var(--primary-color));
+        }
+
+        /* Info Section */
+        .info-section {
+            background: linear-gradient(135deg, rgba(139, 69, 19, 0.15), rgba(47, 27, 20, 0.2));
+            border-radius: 20px;
+            padding: 3rem;
+            margin: 3rem 0;
+            backdrop-filter: blur(10px);
+            border: 1px solid var(--accent-color);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.3);
+        }
+
+        .info-card {
+            background: rgba(218, 165, 32, 0.1);
+            border: 1px solid rgba(218, 165, 32, 0.3);
+            border-radius: 15px;
+            padding: 2rem;
+            margin: 1rem 0;
+            transition: all 0.3s ease;
+        }
+
+        .info-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(218, 165, 32, 0.2);
+            border-color: var(--accent-color);
+        }
+
+        .info-card h4 {
+            color: var(--accent-color);
+            margin-bottom: 1rem;
+        }
+
+        /* Section Management */
+        .section {
+            display: none;
+            animation: fadeIn 0.5s ease-in;
+        }
+
+        .section.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Footer */
+        footer {
+            background: linear-gradient(135deg, var(--dark-color), #000);
+            color: var(--light-color);
+            text-align: center;
+            padding: 2rem;
+            margin-top: 4rem;
+            border-top: 3px solid var(--accent-color);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .animated-title {
+                font-size: 3rem;
+            }
+            .carousel-item img {
+                height: 300px;
+            }
+            .form-container, .info-section {
+                padding: 2rem 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="#" onclick="showSection('home')">
+                <i class="fas fa-cut"></i> Torito The Barber$
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#" onclick="showSection('home')">
+                            <i class="fas fa-home"></i> Inicio
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#" onclick="showSection('reserva')">
+                            <i class="fas fa-calendar-plus"></i> Hacer una Reserva
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#" onclick="showSection('informacion')">
+                            <i class="fas fa-info-circle"></i> Información
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container-fluid" style="padding-top: 100px;">
+        <!-- HOME SECTION -->
+        <div id="home" class="section active">
+            <div class="container">
+                <!-- Carousel -->
+                <div class="carousel-container">
+                    <div id="barberiaCarousel" class="carousel slide" data-bs-ride="carousel">
+                        <div class="carousel-indicators">
+                            <button type="button" data-bs-target="#barberiaCarousel" data-bs-slide-to="0" class="active"></button>
+                            <button type="button" data-bs-target="#barberiaCarousel" data-bs-slide-to="1"></button>
+                            <button type="button" data-bs-target="#barberiaCarousel" data-bs-slide-to="2"></button>
+                            <button type="button" data-bs-target="#barberiaCarousel" data-bs-slide-to="3"></button>
+                        </div>
+                        <div class="carousel-inner">
+                            <div class="carousel-item active">
+                                <img src="http://imgfz.com/i/ByqLPX1.jpeg" class="d-block w-100" alt="Barbería Interior 1">
+                                <div class="carousel-caption d-none d-md-block">
+                                    <h5>Ambiente Profesional</h5>
+                                    <p>Un espacio diseñado para tu comodidad</p>
+                                </div>
+                            </div>
+                            <div class="carousel-item">
+                                <img src="http://imgfz.com/i/wGSgQeC.jpeg" class="d-block w-100" alt="Barbería Interior 2">
+                                <div class="carousel-caption d-none d-md-block">
+                                    <h5>Equipos de Primera</h5>
+                                    <p>Herramientas profesionales para el mejor resultado</p>
+                                </div>
+                            </div>
+                            <div class="carousel-item">
+                                <img src="http://imgfz.com/i/05QeYK7.jpeg" class="d-block w-100" alt="Barbería Interior 3">
+                                <div class="carousel-caption d-none d-md-block">
+                                    <h5>Tradición y Estilo</h5>
+                                    <p>Combinamos lo clásico con las tendencias actuales</p>
+                                </div>
+                            </div>
+                            <div class="carousel-item">
+                                <img src="http://imgfz.com/i/LxibcpQ.jpeg" class="d-block w-100" alt="Barbería Interior 4">
+                                <div class="carousel-caption d-none d-md-block">
+                                    <h5>Atención Personalizada</h5>
+                                    <p>Cada cliente es único, cada corte es especial</p>
+                                </div>
+                            </div>
+                        </div>
+                        <button class="carousel-control-prev" type="button" data-bs-target="#barberiaCarousel" data-bs-slide="prev">
+                            <span class="carousel-control-prev-icon"></span>
+                            <span class="visually-hidden">Anterior</span>
+                        </button>
+                        <button class="carousel-control-next" type="button" data-bs-target="#barberiaCarousel" data-bs-slide="next">
+                            <span class="carousel-control-next-icon"></span>
+                            <span class="visually-hidden">Siguiente</span>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Animated Title -->
+                <div class="title-section">
+                    <h1 class="animated-title">Torito The Barber$</h1>
+                    <p class="subtitle">Barbería</p>
+                    <div class="mt-4">
+                        <p style="font-size: 1.2rem; color: var(--light-color); opacity: 0.8;">
+                            Donde la tradición se encuentra con el estilo moderno
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- RESERVA SECTION -->
+        <div id="reserva" class="section">
+            <div class="container">
+                <div class="form-container">
+                    <h2 class="section-title">
+                        <i class="fas fa-calendar-check"></i> Hacer una Reserva
+                    </h2>
+                    
+                    <form id="reservaForm">
+                        <div class="row">
+                            <div class="col-md-6 mb-4">
+                                <label for="nombreApellido" class="form-label">
+                                    <i class="fas fa-user"></i> Nombre y Apellido *
+                                </label>
+                                <input type="text" class="form-control" id="nombreApellido" 
+                                       placeholder="Ingresa tu nombre completo" required>
+                            </div>
+                            <div class="col-md-6 mb-4">
+                                <label for="telefono" class="form-label">
+                                    <i class="fas fa-phone"></i> Teléfono *
+                                </label>
+                                <input type="tel" class="form-control" id="telefono" 
+                                       placeholder="Ej: +54 9 261 123-4567" required>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-6 mb-4">
+                                <label for="fecha" class="form-label">
+                                    <i class="fas fa-calendar-alt"></i> Fecha *
+                                </label>
+                                <input type="date" class="form-control" id="fecha" required>
+                            </div>
+                            <div class="col-md-6 mb-4">
+                                <label for="hora" class="form-label">
+                                    <i class="fas fa-clock"></i> Hora *
+                                </label>
+                                <select class="form-select" id="hora" required>
+                                    <option value="">Selecciona una hora</option>
+                                    <option value="10:00">10:00 AM</option>
+                                    <option value="10:30">10:30 AM</option>
+                                    <option value="11:00">11:00 AM</option>
+                                    <option value="11:30">11:30 AM</option>
+                                    <option value="12:00">12:00 PM</option>
+                                    <option value="12:30">12:30 PM</option>
+                                    <option value="13:00">1:00 PM</option>
+                                    <option value="13:30">1:30 PM</option>
+                                    <option value="14:00">2:00 PM</option>
+                                    <option value="14:30">2:30 PM</option>
+                                    <option value="15:00">3:00 PM</option>
+                                    <option value="15:30">3:30 PM</option>
+                                    <option value="16:00">4:00 PM</option>
+                                    <option value="16:30">4:30 PM</option>
+                                    <option value="17:00">5:00 PM</option>
+                                    <option value="17:30">5:30 PM</option>
+                                    <option value="18:00">6:00 PM</option>
+                                    <option value="18:30">6:30 PM</option>
+                                    <option value="19:00">7:00 PM</option>
+                                    <option value="19:30">7:30 PM</option>
+                                    <option value="20:00">8:00 PM</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="mb-4">
+                            <label class="form-label">
+                                <i class="fas fa-user-tie"></i> Seleccionar Barbero *
+                            </label>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="radio" name="barbero" id="pablo" value="Pablo" required>
+                                        <label class="form-check-label" for="pablo">
+                                            <i class="fas fa-scissors"></i> Pablo
+                                        </label>
+                                    </div>
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="radio" name="barbero" id="oscar" value="Oscar" required>
+                                        <label class="form-check-label" for="oscar">
+                                            <i class="fas fa-scissors"></i> Oscar
+                                        </label>
+                                    </div>
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="radio" name="barbero" id="dario" value="Dario" required>
+                                        <label class="form-check-label" for="dario">
+                                            <i class="fas fa-scissors"></i> Darío
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="radio" name="barbero" id="cristian" value="Cristian" required>
+                                        <label class="form-check-label" for="cristian">
+                                            <i class="fas fa-scissors"></i> Cristian
+                                        </label>
+                                    </div>
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="radio" name="barbero" id="ninguno" value="Ninguno de preferencia" required>
+                                        <label class="form-check-label" for="ninguno">
+                                            <i class="fas fa-random"></i> Ninguno de preferencia
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="mb-5">
+                            <label class="form-label">
+                                <i class="fas fa-cut"></i> Seleccionar Servicio(s) *
+                            </label>
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" id="corte" value="Corte">
+                                        <label class="form-check-label" for="corte">
+                                            <i class="fas fa-cut"></i> Corte
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" id="corteBarba" value="Corte y barba">
+                                        <label class="form-check-label" for="corteBarba">
+                                            <i class="fas fa-user-check"></i> Corte y barba
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" id="tenido" value="Teñido">
+                                        <label class="form-check-label" for="tenido">
+                                            <i class="fas fa-palette"></i> Teñido
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="text-center">
+                            <button type="submit" class="btn btn-primary btn-lg">
+                                <i class="fas fa-paper-plane"></i> Confirmar Reserva
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <!-- INFORMACIÓN SECTION -->
+        <div id="informacion" class="section">
+            <div class="container">
+                <div class="info-section">
+                    <h2 class="section-title">
+                        <i class="fas fa-info-circle"></i> Información
+                    </h2>
+                    
+                    <div class="row">
+                        <div class="col-md-6 mb-4">
+                            <div class="info-card">
+                                <h4><i class="fas fa-users"></i> Nuestro Equipo</h4>
+                                <div class="mb-3">
+                                    <h5><i class="fas fa-user"></i> Pablo</h5>
+                                    <p>Especialista en cortes clásicos y modernos. Más de 8 años de experiencia en el arte de la barbería.</p>
+                                </div>
+                                <div class="mb-3">
+                                    <h5><i class="fas fa-user"></i> Oscar</h5>
+                                    <p>Experto en el cuidado de barbas y bigotes. Técnicas tradicionales con un toque contemporáneo.</p>
+                                </div>
+                                <div class="mb-3">
+                                    <h5><i class="fas fa-user"></i> Darío</h5>
+                                    <p>Maestro del fade y cortes juveniles. Siempre al día con las últimas tendencias.</p>
+                                </div>
+                                <div class="mb-3">
+                                    <h5><i class="fas fa-user"></i> Cristian</h5>
+                                    <p>Especialista en colorimetría y teñidos. Técnicas avanzadas para transformar tu look.</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="col-md-6 mb-4">
+                            <div class="info-card">
+                                <h4><i class="fas fa-cut"></i> Servicios</h4>
+                                <div class="mb-3">
+                                    <h5><i class="fas fa-scissors"></i> Corte</h5>
+                                    <p>Cortes personalizados según tu estilo y preferencias. Desde clásicos hasta las tendencias más actuales.</p>
+                                </div>
+                                <div class="mb-3">
+                                    <h5><i class="fas fa-user-check"></i> Corte y Barba</h5>
+                                    <p>Servicio completo que incluye corte de cabello y arreglo profesional de barba y bigote.</p>
+                                </div>
+                                <div class="mb-3">
+                                    <h5><i class="fas fa-palette"></i> Teñido</h5>
+                                    <p>Coloración profesional con productos de primera calidad. Desde toques sutiles hasta cambios dramáticos.</p>
+                                </div>
+                            </div>
+                            
+                            <div class="info-card">
+                                <h4><i class="fas fa-clock"></i> Horarios de Atención</h4>
+                                <p><strong>Lunes a Viernes:</strong> 10:00 AM - 8:00 PM</p>
+                                <p><strong>Sábados:</strong> 10:00 AM - 8:00 PM</p>
+                                <p><strong>Domingos:</strong> Cerrado</p>
+                                <p class="mt-3"><em>Ubicacion: Gomensoro 2067 - Guaymallen,Mendoza</em></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <h5><i class="fas fa-cut"></i> Torito The Barber$</h5>
+                    <p>&copy; 2025 Torito The Barber$ - Todos los derechos reservados</p>
+                    <p>
+                        <i class="fas fa-map-marker-alt"></i> Mendoza, Argentina | 
+                        <i class="fas fa-phone"></i> Telefono: 2617159167
+                    </p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // Function to show sections
+        function showSection(sectionId) {
+            // Hide all sections
+            const sections = document.querySelectorAll('.section');
+            sections.forEach(section => {
+                section.classList.remove('active');
+            });
+            
+            // Show the selected section
+            const targetSection = document.getElementById(sectionId);
+            if (targetSection) {
+                targetSection.classList.add('active');
+            }
+        }
+
+        // Set minimum date to today
+        document.addEventListener('DOMContentLoaded', function() {
+            const today = new Date().toISOString().split('T')[0];
+            document.getElementById('fecha').setAttribute('min', today);
+        });
+
+        // Form submission handler
+        document.getElementById('reservaForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Get form values
+            const nombre = document.getElementById('nombreApellido').value;
+            const telefono = document.getElementById('telefono').value;
+            const fecha = document.getElementById('fecha').value;
+            const hora = document.getElementById('hora').value;
+            const barbero = document.querySelector('input[name="barbero"]:checked')?.value;
+            
+            // Get selected services
+            const servicios = [];
+            if (document.getElementById('corte').checked) servicios.push('Corte');
+            if (document.getElementById('corteBarba').checked) servicios.push('Corte y barba');
+            if (document.getElementById('tenido').checked) servicios.push('Teñido');
+            
+            // Validate that at least one service is selected
+            if (servicios.length === 0) {
+                alert('⚠️ Por favor selecciona al menos un servicio.');
+                return;
+            }
+            
+            // Format date for display
+            const fechaObj = new Date(fecha);
+            const fechaFormateada = fechaObj.toLocaleDateString('es-AR', {
+                weekday: 'long',
+                year: 'numeric',
+                month: 'long',
+                day: 'numeric'
+            });
+            
+            // Show confirmation message
+            const confirmacion = `
+🎉 ¡RESERVA CONFIRMADA! 🎉
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+📝 DETALLES DE TU RESERVA:
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+👤 Cliente: ${nombre}
+📱 Teléfono: ${telefono}
+📅 Fecha: ${fechaFormateada}
+🕐 Hora: ${hora}
+✂️ Barbero: ${barbero}
+💼 Servicios: ${servicios.join(', ')}
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+🏪 TORITO THE BARBER$ - BARBERÍA
+📍 Mendoza, Argentina
+
+⏰ Por favor llega 5 minutos antes de tu cita
+📞 Para cancelar o reprogramar, contactanos con anticipación
+
+¡Nos vemos pronto! 🤝
+            `;
+            
+            alert(confirmacion);
+            
+            // Reset form
+            this.reset();
+            
+            // Optional: Show a success message on the page
+            showSuccessMessage();
+        });
+
+        // Function to show success message
+        function showSuccessMessage() {
+            const successDiv = document.createElement('div');
+            successDiv.className = 'alert alert-success mt-3';
+            successDiv.style.cssText = `
+                background: linear-gradient(135deg, #28a745, #20c997);
+                border: none;
+                color: white;
+                border-radius: 15px;
+                box-shadow: 0 5px 15px rgba(40, 167, 69, 0.3);
+                text-align: center;
+                font-weight: bold;
+            `;
+            successDiv.innerHTML = `
+                <i class="fas fa-check-circle"></i> 
+                ¡Reserva enviada exitosamente! Te esperamos en Torito The Barber$
+            `;
+            
+            const formContainer = document.querySelector('.form-container');
+            formContainer.appendChild(successDiv);
+            
+            // Remove success message after 5 seconds
+            setTimeout(() => {
+                successDiv.remove();
+            }, 5000);
+        }
+
+        // Auto-advance carousel every 5 seconds
+        const carousel = new bootstrap.Carousel(document.getElementById('barberiaCarousel'), {
+            interval: 5000,
+            ride: 'carousel'
+        });
+
+        // Add smooth scrolling effect when changing sections
+        function showSection(sectionId) {
+            // Hide all sections
+            const sections = document.querySelectorAll('.section');
+            sections.forEach(section => {
+                section.classList.remove('active');
+            });
+            
+            // Show the selected section
+            const targetSection = document.getElementById(sectionId);
+            if (targetSection) {
+                targetSection.classList.add('active');
+                
+                // Smooth scroll to top
+                window.scrollTo({
+                    top: 0,
+                    behavior: 'smooth'
+                });
+            }
+        }
+
+        // Add some interactive effects
+        document.addEventListener('DOMContentLoaded', function() {
+            // Set minimum date to today
+            const today = new Date().toISOString().split('T')[0];
+            document.getElementById('fecha').setAttribute('min', today);
+            
+            // Add hover effects to form elements
+            const formControls = document.querySelectorAll('.form-control, .form-select');
+            formControls.forEach(control => {
+                control.addEventListener('focus', function() {
+                    this.style.transform = 'scale(1.02)';
+                });
+                
+                control.addEventListener('blur', function() {
+                    this.style.transform = 'scale(1)';
+                });
+            });
+            
+            // Add click sound effect to buttons (visual feedback)
+            const buttons = document.querySelectorAll('.btn, .nav-link, .form-check-input');
+            buttons.forEach(button => {
+                button.addEventListener('click', function() {
+                    this.style.transform = 'scale(0.98)';
+                    setTimeout(() => {
+                        this.style.transform = 'scale(1)';
+                    }, 100);
+                });
+            });
+        });
+
+        // Validate phone number format
+        document.getElementById('telefono').addEventListener('input', function(e) {
+            let value = e.target.value.replace(/\D/g, ''); // Remove non-digits
+            if (value.length > 0) {
+                // Format as +54 9 XXX XXX-XXXX
+                if (value.length <= 3) {
+                    value = value;
+                } else if (value.length <= 6) {
+                    value = value.substring(0, 3) + ' ' + value.substring(3);
+                } else if (value.length <= 10) {
+                    value = value.substring(0, 3) + ' ' + value.substring(3, 6) + '-' + value.substring(6);
+                } else {
+                    value = value.substring(0, 3) + ' ' + value.substring(3, 6) + '-' + value.substring(6, 10);
+                }
+                
+                if (value.length > 0) {
+                    e.target.value = '+54 9 ' + value;
+                }
+            }
+        });
+    </script>
+</body>
+</html>

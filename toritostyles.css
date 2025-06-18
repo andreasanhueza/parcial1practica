@@ -1,0 +1,277 @@
+:root {
+    --primary-color: #8B4513;
+    --secondary-color: #D2691E;
+    --accent-color: #DAA520;
+    --dark-color: #2F1B14;
+    --light-color: #F5F5DC;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
+    color: #fff;
+    min-height: 100vh;
+}
+
+/* Navbar Styles */
+.navbar {
+    background: linear-gradient(135deg, var(--primary-color), var(--dark-color)) !important;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+    padding: 1rem 0;
+}
+
+.navbar-brand {
+    font-weight: bold;
+    font-size: 1.8rem;
+    color: var(--accent-color) !important;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+}
+
+.nav-link {
+    color: #fff !important;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    padding: 0.5rem 1rem !important;
+    border-radius: 5px;
+    margin: 0 0.2rem;
+}
+
+.nav-link:hover {
+    color: var(--accent-color) !important;
+    background: rgba(218, 165, 32, 0.1);
+    transform: translateY(-2px);
+}
+
+/* Carousel Styles */
+.carousel-container {
+    margin: 2rem 0;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+}
+
+.carousel-item img {
+    height: 500px;
+    object-fit: cover;
+    filter: brightness(0.8);
+}
+
+.carousel-indicators button {
+    background-color: var(--accent-color);
+    border: 2px solid #fff;
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
+}
+
+/* Animated Title */
+.title-section {
+    text-align: center;
+    margin: 4rem 0;
+    padding: 3rem 1rem;
+}
+
+.animated-title {
+    font-family: 'Georgia', serif;
+    font-size: 4.5rem;
+    font-weight: bold;
+    background: linear-gradient(45deg, var(--accent-color), #FFD700, var(--secondary-color), #FF8C00);
+    background-size: 400% 400%;
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: gradientMove 4s ease-in-out infinite;
+    transition: all 0.4s ease;
+    cursor: pointer;
+    text-shadow: 0 0 20px rgba(218, 165, 32, 0.3);
+    position: relative;
+}
+
+.animated-title:hover {
+    transform: scale(1.15);
+    filter: drop-shadow(0 0 20px rgba(218, 165, 32, 0.6));
+    animation-duration: 1s;
+}
+
+@keyframes gradientMove {
+    0%, 100% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+}
+
+.subtitle {
+    font-family: 'Georgia', serif;
+    font-size: 1.8rem;
+    color: var(--light-color);
+    margin-top: 1.5rem;
+    font-style: italic;
+    opacity: 0.9;
+}
+
+/* Form Styles */
+.form-container {
+    background: linear-gradient(135deg, rgba(139, 69, 19, 0.15), rgba(47, 27, 20, 0.2));
+    border: 2px solid var(--accent-color);
+    border-radius: 20px;
+    padding: 3rem;
+    margin: 3rem 0;
+    backdrop-filter: blur(10px);
+    box-shadow: 0 15px 35px rgba(0,0,0,0.3);
+}
+
+.section-title {
+    color: var(--accent-color);
+    font-size: 2.8rem;
+    margin-bottom: 2rem;
+    text-align: center;
+    font-weight: bold;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+}
+
+.form-label {
+    color: var(--accent-color);
+    font-weight: bold;
+    font-size: 1.1rem;
+    margin-bottom: 0.5rem;
+}
+
+.form-control, .form-select {
+    background: rgba(245, 245, 220, 0.1);
+    border: 2px solid rgba(218, 165, 32, 0.5);
+    color: #fff;
+    border-radius: 10px;
+    padding: 0.8rem;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+}
+
+.form-control:focus, .form-select:focus {
+    background: rgba(245, 245, 220, 0.2);
+    border-color: var(--accent-color);
+    box-shadow: 0 0 15px rgba(218, 165, 32, 0.4);
+    color: #fff;
+}
+
+.form-control::placeholder {
+    color: rgba(245, 245, 220, 0.7);
+}
+
+.form-select option {
+    background: var(--dark-color);
+    color: #fff;
+}
+
+/* Radio and Checkbox Styles */
+.form-check {
+    margin: 0.8rem 0;
+    padding: 0.5rem;
+    border-radius: 8px;
+    transition: background 0.3s ease;
+}
+
+.form-check:hover {
+    background: rgba(218, 165, 32, 0.1);
+}
+
+.form-check-label {
+    color: #fff;
+    font-weight: 500;
+    font-size: 1.05rem;
+    cursor: pointer;
+}
+
+.form-check-input[type="radio"], .form-check-input[type="checkbox"] {
+    border: 2px solid var(--accent-color);
+    background: transparent;
+}
+
+.form-check-input:checked {
+    background-color: var(--accent-color);
+    border-color: var(--accent-color);
+}
+
+/* Button Styles */
+.btn-primary {
+    background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
+    border: none;
+    border-radius: 30px;
+    padding: 15px 40px;
+    font-weight: bold;
+    font-size: 1.2rem;
+    transition: all 0.4s ease;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+}
+
+.btn-primary:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 25px rgba(218, 165, 32, 0.4);
+    background: linear-gradient(45deg, var(--secondary-color), var(--primary-color));
+}
+
+/* Info Section */
+.info-section {
+    background: linear-gradient(135deg, rgba(139, 69, 19, 0.15), rgba(47, 27, 20, 0.2));
+    border-radius: 20px;
+    padding: 3rem;
+    margin: 3rem 0;
+    backdrop-filter: blur(10px);
+    border: 1px solid var(--accent-color);
+    box-shadow: 0 15px 35px rgba(0,0,0,0.3);
+}
+
+.info-card {
+    background: rgba(218, 165, 32, 0.1);
+    border: 1px solid rgba(218, 165, 32, 0.3);
+    border-radius: 15px;
+    padding: 2rem;
+    margin: 1rem 0;
+    transition: all 0.3s ease;
+}
+
+.info-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(218, 165, 32, 0.2);
+    border-color: var(--accent-color);
+}
+
+.info-card h4 {
+    color: var(--accent-color);
+    margin-bottom: 1rem;
+}
+
+/* Section Management */
+.section {
+    display: none;
+    animation: fadeIn 0.5s ease-in;
+}
+
+.section.active {
+    display: block;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* Footer */
+footer {
+    background: linear-gradient(135deg, var(--dark-color), #000);
+    color: var(--light-color);
+    text-align: center;
+    padding: 2rem;
+    margin-top: 4rem;
+    border-top: 3px solid var(--accent-color);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .animated-title {
+        font-size: 3rem;
+    }
+    .carousel-item img {
+        height: 300px;
+    }
+    .form-container, .info-section {
+        padding: 2rem 1rem;
+    }
+}
